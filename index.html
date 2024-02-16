@@ -190,6 +190,30 @@
     </section>
     <!-- Contact -->
     
+    <?php
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $message = $_POST['message'];
+
+  
+    $to = "amirnendra001@gmail.com";
+
+    $subject = "Pesan dari: $name";
+    $body = "Nama: $name\nEmail: $email\n\nPesan:\n$message";
+
+    $headers = "From: $email";
+
+    if (mail($to, $subject, $body, $headers)) {
+        echo "<p>Pesan Anda telah terkirim. Terima kasih!</p>";
+    } else {
+        echo "<p>Maaf, pesan Anda gagal terkirim.</p>";
+    }
+}
+?>
+    
     <section class="contact" id="contact">
     <div class="heading">
         <h2>Contact</h2>
